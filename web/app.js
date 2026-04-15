@@ -1157,6 +1157,7 @@ function renderHud() {
 }
 
 function renderSelectedNodeCard() {
+  if (!els.selectedNodeCard) return;
   const viewer = getViewer();
   const nodeId = state.hoveredNode ?? state.selectedNode;
   if (!state.gameState?.nodes?.[nodeId]) {
@@ -1420,6 +1421,14 @@ function bootstrap() {
     applyInterfaceMode();
     renderAll();
   });
+  if (els.deckStatusPill) {
+    els.deckStatusPill.addEventListener("click", () => {
+      state.interfaceMode = state.interfaceMode === "deck" ? "signal" : "deck";
+      saveInterfaceMode();
+      applyInterfaceMode();
+      renderAll();
+    });
+  }
   els.copyRoomLinkButton.addEventListener("click", () => copyText(buildRoomLink(), "Room link copied."));
   els.copyInviteButton.addEventListener("click", () => copyText(buildRoomLink(), "Invite link copied."));
   els.copyChallengeButton.addEventListener("click", () => copyText(buildChallengeText(), "Challenge message copied."));

@@ -2005,6 +2005,11 @@ body.ui-refresh .status-pill {
   background: var(--surface-bg);
   color: var(--surface-ink);
   box-shadow: 0 12px 26px rgba(6, 15, 28, 0.08);
+  cursor: default;
+}
+
+body.ui-refresh button.status-pill {
+  cursor: pointer;
 }
 
 body.ui-refresh .status-pill.muted {
