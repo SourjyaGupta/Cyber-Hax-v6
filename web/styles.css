@@ -2388,7 +2388,6 @@ body.ui-refresh .terminal-pane {
   flex: 1;
   border-radius: 1.2rem;
   padding: 0.95rem;
-  height: 32rem;
 }
 
 body.ui-refresh .terminal-pane.is-active {
@@ -2410,6 +2409,7 @@ body.ui-refresh .chat-output {
   flex: 1;
   padding-top: 0.85rem;
   overflow-y: auto;
+  max-height: 400px; /* Fallback for older browsers or complex flex layouts */
 }
 
 body.ui-refresh .command-deck {
