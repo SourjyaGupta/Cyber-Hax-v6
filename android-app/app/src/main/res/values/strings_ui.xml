@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_loading_badge">LIVE RELAY</string>
+    <string name="status_loading_title">Connecting To Cyber Hax</string>
+    <string name="status_loading_title_retry">Reconnecting To The Arena</string>
+    <string name="status_loading_subtitle">Opening the live two-player network duel and preparing your command deck.</string>
+    <string name="status_loading_message">Syncing secure uplink...</string>
+    <string name="status_loading_message_cold_start">The arena server is waking up... this can take 50+ seconds on first load.</string>
+    <string name="status_loading_progress_initial">0% loaded</string>
+    <string name="status_loading_progress_percent">%1$d%% loaded</string>
+    <string name="status_loading_tip_title">Quick Start</string>
+    <string name="status_loading_tip_body">When the page opens, create a room or enter the same room code as your opponent to jump straight into the duel.</string>
+    <string name="status_loading_tip_footer">Stable Wi-Fi or 4G/5G helps room reconnects. Swipe from the screen edge anytime to reveal Android system bars.</string>
+    <string name="status_host_label">Live Host</string>
+    <string name="status_error_badge_default">MATCH STATUS</string>
+    <string name="status_error_badge_offline">OFFLINE</string>
+    <string name="status_error_badge_secure">SECURE LINK</string>
+    <string name="status_error_badge_renderer">RELOAD REQUIRED</string>
+    <string name="status_offline_title">No Internet Connection</string>
+    <string name="status_ssl_title">Secure Connection Failed</string>
+    <string name="status_renderer_title">Renderer Needs A Refresh</string>
+    <string name="status_error_hint_default">If the live site opens in your browser, tapping Retry Match should bring you back into the game shell here.</string>
+    <string name="status_error_hint_offline">Reconnect the device first, then retry. If needed, open the site in your browser to confirm the network is stable.</string>
+    <string name="status_error_hint_secure">The device could not verify the secure connection. Retry in a moment, or open the site in your browser to confirm the certificate path.</string>
+    <string name="status_error_hint_renderer">Android\'s web renderer was interrupted. Retrying the session usually restores the live game cleanly.</string>
+    <string name="status_close_button">Close App</string>
+    <string name="status_connection_lab_button">Connection Lab</string>
+    <string name="status_connection_lab_badge">DEBUG TOOLS</string>
+    <string name="status_connection_lab_title">Test Local Or Live Hosts</string>
+    <string name="status_connection_lab_body">Use this debug-only panel to switch the Android wrapper between the public deployment, emulator localhost, or a LAN URL from your PC.</string>
+    <string name="status_connection_lab_input_label">Game URL</string>
+    <string name="status_connection_lab_input_hint">https://cyber-hax.netlify.app/play/</string>
+    <string name="status_connection_lab_live_button">Use Live</string>
+    <string name="status_connection_lab_emulator_button">Use Emulator</string>
+    <string name="status_connection_lab_lan_button">Use LAN Template</string>
+    <string name="status_connection_lab_reset_button">Reset To Live</string>
+    <string name="status_connection_lab_save_button">Save And Reload</string>
+    <string name="status_connection_lab_cancel_button">Cancel</string>
+    <string name="status_connection_lab_note">Emulator preset: http://10.0.2.2:8000/ . Real phone preset: replace the LAN template with your PC\'s Wi-Fi IP.</string>
+    <string name="status_connection_lab_invalid_url">Enter a full http:// or https:// game URL before saving.</string>
+</resources>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cyber Hax v5</title>
+    <meta
+      name="description"
+      content="Local FastAPI test build for Cyber Hax v5. Same multiplayer UI, served with /static assets."
+    />
+    <!-- Local test build expects FastAPI to serve CSS, JS, audio, and favicon from /static/... -->
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="local-build">
+    <audio id="bgMusic" loop preload="auto">
+      <source src="/static/main_music.ogg" type="audio/ogg" />
+    </audio>
+
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <div class="ambient ambient-c"></div>
+    <div class="scanlines"></div>
+
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">Browser Multiplayer Duel</p>
+        <h1>Cyber Hax v5</h1>
+        <p class="tagline">Trace the graph. Outplay the rival. Breach the core first.</p>
+      </div>
+      <div class="topbar-actions">
+        <span class="status-pill" id="connectionPill">Offline</span>
+        <span class="status-pill muted" id="sessionPill">Room ------</span>
+        <button class="ghost-btn" id="helpButton" type="button">How To Play</button>
+        <button class="ghost-btn" id="inviteButton" type="button">Invite</button>
+        <button class="ghost-btn" id="settingsToggle" type="button">Room Settings</button>
+        <button class="ghost-btn" id="musicToggle" type="button">Start Music</button>
+      </div>
+    </header>
+
+    <section class="join-sheet is-open" id="joinSheet" aria-label="Room setup">
+      <div class="join-shell">
+        <section class="hero-panel">
+          <p class="eyebrow">Clean Cyber Tactics</p>
+          <h2>Fast, readable, shareable network duels in the browser.</h2>
+          <p class="lede">
+            One room. Two operators. One live graph. Create a room, share the link, and race through traps,
+            locked nodes, and access keys to reach the server core first.
+          </p>
+
+          <div class="hero-points">
+            <p>Built for real-time multiplayer with a single shareable invite link.</p>
+            <p>Hover nodes for intel, click to queue actions, and use the terminal for deeper plays.</p>
+            <p>Lightweight enough for fast browser play, clear enough for first-time testers.</p>
+          </div>
+
+          <div class="landing-grid">
+            <article class="landing-card">
+              <span>01</span>
+              <h3>Create or Join</h3>
+              <p>Start a fresh room or enter a room code from a friend.</p>
+            </article>
+            <article class="landing-card">
+              <span>02</span>
+              <h3>Read The Network</h3>
+              <p>Use sweeps, probes, and pathing to learn where the safest route opens.</p>
+            </article>
+            <article class="landing-card">
+              <span>03</span>
+              <h3>Exploit Faster</h3>
+              <p>Unlock routes, dodge traps, and reach the server before the other operator.</p>
+            </article>
+          </div>
+
+          <div class="how-strip">
+            <div>
+              <strong>How to Play</strong>
+              <p>Blue glow means active play. Mint nodes are the core. Gold nodes need unlocks. Pink means danger.</p>
+            </div>
+            <p id="landingInviteHint">Create a room to challenge a friend or paste a room code to join instantly.</p>
+          </div>
+        </section>
+
+        <section class="join-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Enter The Room</p>
+            <h3>Match Setup</h3>
+            <p class="subcopy">Use the same room code as your opponent. The app will handle reconnects and live updates.</p>
+          </div>
+
+          <form class="join-form" id="joinForm">
+            <label class="field">
+              <span>Callsign</span>
+              <input id="playerInput" name="player" autocomplete="off" maxlength="24" placeholder="Operator-101" />
+            </label>
+
+            <label class="field">
+              <span>Room Code</span>
+              <input id="sessionInput" name="session" autocomplete="off" maxlength="32" placeholder="A1B2C3" />
+            </label>
+
+            <label class="field">
+              <span>Server Host</span>
+              <input id="serverInput" name="server" autocomplete="off" placeholder="ws://127.0.0.1:8000" />
+            </label>
+
+            <div class="join-actions">
+              <button class="primary-btn" id="createRoomButton" type="button">Create Room</button>
+              <button class="secondary-btn" type="submit">Join Room</button>
+            </div>
+
+            <button class="ghost-btn full-width" id="resumeButton" type="button">Return To Match</button>
+
+            <p class="join-status" id="joinStatus">
+              Set a callsign, create or enter a room, and connect to the live session server.
+            </p>
+          </form>
+
+          <div class="mini-guide">
+            <h4>Quick Rules</h4>
+            <div class="mini-guide-list">
+              <p>1. Reach the server node before the other player.</p>
+              <p>2. Use `probe`, `sweep`, and `path` to read the graph.</p>
+              <p>3. Locked nodes need keys or passwords. Mines and traps can stun you.</p>
+              <p>4. After a match, use rematch to keep score or restart to clear the room score.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="modal hidden" id="helpModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" data-close-modal="helpModal" type="button">Close</button>
+        <p class="eyebrow">How To Play</p>
+        <h2>Win the network duel</h2>
+        <div class="modal-grid">
+          <article>
+            <h3>Objective</h3>
+            <p>Move through the graph and be the first operator to reach the server node.</p>
+          </article>
+          <article>
+            <h3>Readability</h3>
+            <p>Hover nodes for details. Click a node to queue a move or probe command into the terminal.</p>
+          </article>
+          <article>
+            <h3>Threats</h3>
+            <p>Gold nodes are locked, pink nodes carry mine risk, and decoys create false branches.</p>
+          </article>
+          <article>
+            <h3>Terminal Plays</h3>
+            <p>Use `mission`, `hint`, `sweep`, `stabilize`, `unlock`, and `reveal` to create openings.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal hidden" id="inviteModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" data-close-modal="inviteModal" type="button">Close</button>
+        <p class="eyebrow">Invite A Rival</p>
+        <h2>Share this room</h2>
+        <label class="field">
+          <span>Invite Link</span>
+          <input id="inviteLinkInput" readonly />
+        </label>
+        <label class="field">
+          <span>Challenge Message</span>
+          <textarea id="inviteMessage" rows="4" readonly></textarea>
+        </label>
+        <div class="join-actions">
+          <button class="primary-btn" id="copyInviteButton" type="button">Copy Invite Link</button>
+          <button class="secondary-btn" id="copyChallengeButton" type="button">Copy Challenge Text</button>
+          <a class="ghost-btn" id="whatsAppShareButton" href="#" target="_blank" rel="noreferrer">Share On WhatsApp</a>
+        </div>
+        <p class="join-status" id="inviteStatus">Create or join a room first to generate a shareable invite.</p>
+      </div>
+    </section>
+
+    <section class="modal hidden" id="summaryModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" data-close-modal="summaryModal" type="button">Close</button>
+        <p class="eyebrow">Match Summary</p>
+        <h2 id="summaryHeadline">Awaiting result</h2>
+        <p class="subcopy" id="summaryDetail">Finish a match to see the result summary here.</p>
+        <div class="summary-grid">
+          <div>
+            <span>Winner</span>
+            <strong id="summaryWinner">-</strong>
+          </div>
+          <div>
+            <span>Room</span>
+            <strong id="summaryRoom">-</strong>
+          </div>
+          <div>
+            <span>Match</span>
+            <strong id="summaryMatch">-</strong>
+          </div>
+          <div>
+            <span>Duration</span>
+            <strong id="summaryDuration">-</strong>
+          </div>
+        </div>
+        <div class="join-actions">
+          <button class="primary-btn" id="rematchButton" type="button">Vote Rematch</button>
+          <button class="secondary-btn" id="restartButton" type="button">Restart Room</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="app-shell">
+      <section class="board-panel">
+        <header class="panel-header">
+          <div>
+            <p class="eyebrow">Network Board</p>
+            <h2>Live Graph</h2>
+            <p class="subcopy">Hover to inspect. Click to queue a move or probe.</p>
+          </div>
+          <div class="header-stats">
+            <div class="header-stat">
+              <span>Match</span>
+              <strong id="matchLabel">#1</strong>
+            </div>
+            <div class="header-stat">
+              <span>Mode</span>
+              <strong id="modeLabel">Waiting</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="board-stage" id="boardStage">
+          <svg id="networkSvg" viewBox="0 0 780 720" preserveAspectRatio="xMidYMid meet" aria-label="Network map"></svg>
+          <div class="board-tooltip hidden" id="boardTooltip"></div>
+          <div class="floating-banner hidden" id="waitingBanner"></div>
+          <div class="floating-banner reconnect hidden" id="reconnectBanner"></div>
+          <div class="floating-banner winner hidden" id="winnerBanner"></div>
+          <div class="toast-stack" id="toastStack"></div>
+        </div>
+
+        <footer class="board-footer">
+          <div class="legend-row">
+            <span><i class="legend-dot player"></i>Your position</span>
+            <span><i class="legend-dot rival"></i>Opponent position</span>
+            <span><i class="legend-dot server"></i>Server node</span>
+            <span><i class="legend-dot locked"></i>Locked node</span>
+            <span><i class="legend-dot mine"></i>Mine risk</span>
+          </div>
+          <p class="action-hint" id="actionHint">Create or join a room to start the duel.</p>
+        </footer>
+      </section>
+
+      <aside class="sidebar">
+        <section class="sidebar-card">
+          <p class="eyebrow">Room</p>
+          <h3>Match Control</h3>
+          <div class="room-code-row">
+            <span class="room-code" id="roomCode">------</span>
+            <button class="ghost-btn compact" id="copyRoomLinkButton" type="button">Copy Link</button>
+          </div>
+          <p class="subcopy" id="roomNotice">Create or join a room to generate a shareable invite.</p>
+          <div class="scoreboard" id="scoreboardList"></div>
+          <div class="room-actions">
+            <button class="secondary-btn" id="sidebarInviteButton" type="button">Invite Friend</button>
+            <button class="ghost-btn" id="sidebarHelpButton" type="button">Open Rules</button>
+          </div>
+        </section>
+
+        <section class="sidebar-card">
+          <p class="eyebrow">Operator</p>
+          <h3>Mission Status</h3>
+          <dl class="metric-list">
+            <div>
+              <dt>Callsign</dt>
+              <dd id="metricPlayer">Standby</dd>
+            </div>
+            <div>
+              <dt>Room mode</dt>
+              <dd id="metricMode">Offline</dd>
+            </div>
+            <div>
+              <dt>Current node</dt>
+              <dd id="metricCurrent">-</dd>
+            </div>
+            <div>
+              <dt>Server node</dt>
+              <dd id="metricServer">-</dd>
+            </div>
+            <div>
+              <dt>Distance</dt>
+              <dd id="metricDistance">-</dd>
+            </div>
+            <div>
+              <dt>Action state</dt>
+              <dd id="metricStatus">Waiting</dd>
+            </div>
+            <div>
+              <dt>Operators</dt>
+              <dd id="metricOperators">0 / 2</dd>
+            </div>
+            <div>
+              <dt>Rank</dt>
+              <dd id="metricRank">Trace Rookie</dd>
+            </div>
+          </dl>
+          <p class="utility-line" id="metricUtilities">Sweeps -, Patch -, Traps -, Decoys -</p>
+          <p class="utility-line" id="metricNext">Next hint: connect to a room to receive a live objective.</p>
+        </section>
+
+        <section class="sidebar-card">
+          <p class="eyebrow">Intel</p>
+          <h3>Selected Node</h3>
+          <div class="node-card" id="selectedNodeCard">
+            Select or hover a node to inspect its links, risks, and contextual actions.
+          </div>
+        </section>
+      </aside>
+
+      <section class="terminal-panel">
+        <header class="panel-header terminal-header">
+          <div>
+            <p class="eyebrow">Command Surface</p>
+            <h3>Terminal</h3>
+            <p class="subcopy">Command results, action feedback, and room events appear here in real time.</p>
+          </div>
+          <div class="terminal-badges">
+            <span class="status-pill muted" id="terminalModePill">Ready</span>
+          </div>
+        </header>
+
+        <div class="terminal-layout">
+          <section class="terminal-column">
+            <p class="pane-label">Action Feed</p>
+            <div class="log-output" id="logOutput"></div>
+          </section>
+          <section class="terminal-column">
+            <p class="pane-label">Command Deck</p>
+            <div class="command-deck" id="commandDeck"></div>
+          </section>
+          <section class="terminal-column chat-column">
+            <p class="pane-label">Operator Chat</p>
+            <div class="chat-output" id="chatOutput"></div>
+            <form class="chat-form" id="chatForm">
+              <input id="chatInput" maxlength="280" autocomplete="off" placeholder="Type a message to the other operator" />
+              <button class="secondary-btn" type="submit">Send Chat</button>
+            </form>
+          </section>
+        </div>
+
+        <form class="terminal-form" id="terminalForm">
+          <input id="commandInput" autocomplete="off" placeholder="Type a command, for example: mission" />
+          <button class="primary-btn" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

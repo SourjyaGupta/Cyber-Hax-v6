@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+WRAPPER_JAR="$(cd "$(dirname "$0")" && pwd)/gradle/wrapper/gradle-wrapper.jar"
+
+if [ -f "$WRAPPER_JAR" ]; then
+  exec java -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
+fi
+
+if command -v gradle >/dev/null 2>&1; then
+  echo "gradle-wrapper.jar not found. Falling back to local Gradle installation."
+  exec gradle "$@"
+fi
+
+echo "gradle-wrapper.jar not found and no local Gradle installation is available."
+echo "Open this project in Android Studio to sync it, or install Gradle and run: gradle wrapper"
+exit 1

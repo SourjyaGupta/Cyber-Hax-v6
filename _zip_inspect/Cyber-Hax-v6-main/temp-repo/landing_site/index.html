@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Cyber Hax v5 is a browser-first multiplayer hacker duel. Create a room, challenge a friend, and race through a live network to breach the core."
+    />
+    <title>Cyber Hax v5 | Browser Multiplayer Hacker Duel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-a"></div>
+    <div class="page-glow page-glow-b"></div>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="brand-mark">CH</span>
+        <span>Cyber Hax v5</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#shots">Screenshots</a>
+        <a href="#how">How To Play</a>
+        <a href="#multiplayer">Multiplayer</a>
+      </nav>
+      <a class="header-cta" data-live-game-link href="/play/">
+        Play The Live Game
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Browser Multiplayer Network Duel</p>
+          <h1>Outroute a rival and breach the core before they do.</h1>
+          <p class="lede">
+            Cyber Hax v5 is a fast two-player hacker duel built for the browser. Create a room, send a link, and
+            race across a live node network full of locks, mines, traps, and short tactical windows.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" data-live-game-link href="/play/">
+              Play The Live Game
+            </a>
+            <a class="secondary-link" href="#how">See How It Works</a>
+          </div>
+          <div class="hero-notes">
+            <p>2 players only</p>
+            <p>shareable room links</p>
+            <p>lightweight web play</p>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="visual-shell">
+            <div class="signal-line"></div>
+            <div class="visual-node n1"></div>
+            <div class="visual-node n2"></div>
+            <div class="visual-node n3"></div>
+            <div class="visual-node n4"></div>
+            <div class="visual-node n5"></div>
+            <div class="visual-core">CORE</div>
+            <div class="visual-terminal">
+              <p>&gt; create room</p>
+              <p>[room] B7Q4XZ reserved</p>
+              <p>[invite] link copied</p>
+              <p>[rival] operator joined</p>
+              <p>[status] route opened</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="support-strip reveal">
+        <p>Designed for quick public playtests, first-time onboarding, and low-friction friend challenges.</p>
+        <p>Netlify serves the landing page and live game shell while Render handles multiplayer rooms and WebSockets.</p>
+      </section>
+
+      <section class="section about reveal" id="about">
+        <div class="section-head">
+          <p class="eyebrow">About The Game</p>
+          <h2>A readable cyber duel, not a bloated sim.</h2>
+        </div>
+        <div class="split-copy">
+          <p>
+            Every match drops two operators into the same live graph. You can hover nodes for intel, queue actions
+            with clicks, use the terminal for deeper plays, and react to your rival in real time.
+          </p>
+          <p>
+            The focus is clean decision-making: reading the route, choosing when to sweep or probe, managing risk, and
+            reaching the server node first. It stays light enough to share instantly and deep enough to replay.
+          </p>
+        </div>
+      </section>
+
+      <section class="section features reveal" id="features">
+        <div class="section-head">
+          <p class="eyebrow">Features</p>
+          <h2>Built for clarity, tension, and repeat matches.</h2>
+        </div>
+        <div class="feature-list">
+          <article>
+            <h3>Live Tactical Map</h3>
+            <p>Readable node states, hover intel, click-to-queue actions, and a full command deck for sharper plays.</p>
+          </article>
+          <article>
+            <h3>Invite-Friendly Multiplayer</h3>
+            <p>Create a room, copy the challenge link, and get a second player in quickly without extra account setup.</p>
+          </article>
+          <article>
+            <h3>Room Score And Rematch</h3>
+            <p>Keep the duel going with rematches, restart the room when needed, and keep the momentum between rounds.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shots reveal" id="shots">
+        <div class="section-head">
+          <p class="eyebrow">Screenshots</p>
+          <h2>Replace these with real gameplay captures when you have them.</h2>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot-frame">
+            <!-- Replace this panel with: <img src="images/lobby-or-board.png" alt="Cyber Hax room setup and live board" /> -->
+            <div class="shot-surface shot-board">
+              <span>Live Board</span>
+              <p>Map, status, and command flow in one read.</p>
+            </div>
+          </figure>
+          <figure class="shot-frame">
+            <!-- Replace this panel with: <img src="images/chat-and-terminal.png" alt="Cyber Hax chat and terminal interface" /> -->
+            <div class="shot-surface shot-terminal">
+              <span>Terminal + Chat</span>
+              <p>Action logs, command deck, and operator chat.</p>
+            </div>
+          </figure>
+          <figure class="shot-frame">
+            <!-- Replace this panel with: <img src="images/endgame-summary.png" alt="Cyber Hax match summary and rematch screen" /> -->
+            <div class="shot-surface shot-summary">
+              <span>Rematch Loop</span>
+              <p>Summary, score tracking, and replay flow.</p>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Future AdSense slot: between content sections -->
+      <section class="section ad-break reveal" aria-label="Future advertising slot">
+        <div class="ad-slot">Future AdSense / sponsor placement</div>
+      </section>
+
+      <section class="section how reveal" id="how">
+        <div class="section-head">
+          <p class="eyebrow">How To Play</p>
+          <h2>Easy to explain, tense to execute.</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <strong>Create or join a room.</strong>
+            Use the invite link or type the same room code as your opponent.
+          </li>
+          <li>
+            <strong>Read the graph.</strong>
+            Hover nodes, probe risky routes, and use sweeps or hints to reveal better paths.
+          </li>
+          <li>
+            <strong>Reach the server first.</strong>
+            Unlock routes, avoid mines, recover from traps, and outpace the other operator.
+          </li>
+        </ol>
+      </section>
+
+      <section class="section multiplayer reveal" id="multiplayer">
+        <div class="section-head">
+          <p class="eyebrow">Multiplayer Flow</p>
+          <h2>Shareable enough for public testing.</h2>
+        </div>
+        <div class="multiplayer-grid">
+          <div>
+            <h3>Create Room</h3>
+            <p>Generate a room, send the link, and let the second player drop straight into the same live match.</p>
+          </div>
+          <div>
+            <h3>Reconnect Friendly</h3>
+            <p>The browser client can recover the room state when a player refreshes or briefly disconnects.</p>
+          </div>
+          <div>
+            <h3>Works With Public Hosting</h3>
+            <p>Use Netlify for the public front door and Render for the authoritative multiplayer backend.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta reveal">
+        <p class="eyebrow">Ready To Challenge Someone?</p>
+        <h2>Send players to the public game page and start collecting real matches.</h2>
+        <div class="hero-actions">
+          <a class="primary-link" data-live-game-link href="/play/">
+            Play The Live Game
+          </a>
+          <a class="secondary-link" href="#top">Back To Top</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p>Cyber Hax v5</p>
+        <span>Browser-first multiplayer hacker duel.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy Placeholder</a>
+        <a href="mailto:contact@example.com">Contact Placeholder</a>
+      </div>
+      <span class="footer-year" id="footerYear"></span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

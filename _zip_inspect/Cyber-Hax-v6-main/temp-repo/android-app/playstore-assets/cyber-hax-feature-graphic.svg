@@ -1,0 +1,29 @@
+<svg width="1024" height="500" viewBox="0 0 1024 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="500" fill="#061018"/>
+  <circle cx="834" cy="104" r="220" fill="#102536"/>
+  <circle cx="182" cy="430" r="240" fill="#0D1C28"/>
+  <path d="M114 132H910" stroke="#173147" stroke-width="2"/>
+  <path d="M114 370H910" stroke="#173147" stroke-width="2"/>
+  <path d="M180 250H844" stroke="#1F5164" stroke-width="3" stroke-dasharray="10 14"/>
+  <circle cx="240" cy="250" r="18" fill="#49F0CF"/>
+  <circle cx="408" cy="250" r="18" fill="#F2FCFF"/>
+  <circle cx="586" cy="250" r="18" fill="#49F0CF"/>
+  <circle cx="760" cy="250" r="18" fill="#F2FCFF"/>
+  <rect x="126" y="104" width="304" height="116" rx="28" fill="#0F1A24" stroke="#1F5164" stroke-width="3"/>
+  <text x="158" y="152" fill="#49F0CF" font-family="monospace" font-size="26" font-weight="700">CYBER HAX</text>
+  <text x="158" y="188" fill="#F2FCFF" font-family="Arial, sans-serif" font-size="44" font-weight="700">Hack the network.</text>
+  <text x="158" y="224" fill="#8CAEBB" font-family="Arial, sans-serif" font-size="24">Outmaneuver your rival in a live two-player cyber duel.</text>
+  <rect x="614" y="102" width="230" height="224" rx="42" fill="#0F1A24" stroke="#49F0CF" stroke-width="4"/>
+  <path d="M729 132L797 171V249L729 288L661 249V171L729 132Z" fill="#173147"/>
+  <path d="M729 146L783 177V243L729 274L675 243V177L729 146Z" fill="#49F0CF"/>
+  <path d="M729 168L760 186V234L729 252L698 234V186L729 168Z" fill="#081118"/>
+  <circle cx="690" cy="186" r="10" fill="#F2FCFF"/>
+  <circle cx="768" cy="224" r="10" fill="#F2FCFF"/>
+  <circle cx="690" cy="262" r="10" fill="#F2FCFF"/>
+  <path d="M699 186H734V191H699Z" fill="#F2FCFF"/>
+  <path d="M733 186H738V219H733Z" fill="#F2FCFF"/>
+  <path d="M706 259H733V264H706Z" fill="#F2FCFF"/>
+  <path d="M737 221H767V226H737Z" fill="#F2FCFF"/>
+  <path d="M736 194L770 228L736 262L722 248L744 228L722 208L736 194Z" fill="#49F0CF"/>
+  <text x="126" y="430" fill="#8CAEBB" font-family="Arial, sans-serif" font-size="24">Android wrapper ready for live rooms, reconnects, and local debug host testing.</text>
+</svg>

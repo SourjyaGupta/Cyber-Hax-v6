@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cyber_bg">#081118</color>
+    <color name="cyber_panel">#0F1A24</color>
+    <color name="cyber_panel_alt">#122433</color>
+    <color name="cyber_panel_glow">#173147</color>
+    <color name="cyber_border">#1F5164</color>
+    <color name="cyber_accent">#49F0CF</color>
+    <color name="cyber_accent_soft">#1A6D69</color>
+    <color name="cyber_warning">#FFC857</color>
+    <color name="cyber_text">#F2FCFF</color>
+    <color name="cyber_text_muted">#8CAEBB</color>
+    <color name="cyber_text_subtle">#6F8D98</color>
+    <color name="overlay_scrim">#CC04080C</color>
+    <color name="splash_bg">#061018</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

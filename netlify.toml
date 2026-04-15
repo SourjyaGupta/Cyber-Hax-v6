@@ -1,0 +1,21 @@
+[build]
+  command = "python build_netlify_site.py"
+  publish = "site_dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[redirects]]
+  from = "/play"
+  to = "/play/"
+  status = 301
+
+[[redirects]]
+  from = "/web"
+  to = "/play/"
+  status = 301
+
+[[redirects]]
+  from = "/web/*"
+  to = "/play/"
+  status = 301

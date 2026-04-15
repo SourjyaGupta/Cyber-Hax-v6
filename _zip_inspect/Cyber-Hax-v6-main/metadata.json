@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Blade Engine",
+  "description": "A minimalist game development workspace for Cyber Hax v5, featuring a real-time network board, terminal interface, and a high-performance Cyber Deck mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

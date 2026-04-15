@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cyber Hax v5</string>
+    <string name="loading_message">Syncing secure uplink...</string>
+    <string name="error_title">Connection Interrupted</string>
+    <string name="load_failed_message">The live game could not be loaded. Check the connection, then try again.</string>
+    <string name="offline_message">You appear to be offline. Connect to the internet, then retry the live match.</string>
+    <string name="retry_button">Retry Match</string>
+    <string name="open_browser_button">Open In Browser</string>
+    <string name="http_error_message">The live game returned an unexpected server response (%1$d).</string>
+    <string name="ssl_error_message">The connection could not be verified securely. Please try again later.</string>
+    <string name="renderer_error_message">The game view ran into a rendering issue. Retry the match to reload it cleanly.</string>
+</resources>
